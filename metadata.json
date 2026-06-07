@@ -1,0 +1,6 @@
+{
+  "name": "James Aves Portfolio",
+  "description": "Single-page minimalist portfolio website for James Aves, operations support and systems specialist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
