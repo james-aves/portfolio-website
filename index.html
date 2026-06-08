@@ -13,20 +13,27 @@
     <style>
       /* --- Dynamic CSS Customs --- */
       :root {
-        --bg-primary: #faf8f5;      /* Light cream / warm off-white background */
-        --bg-secondary: #f3efe9;    /* Fine subtle warm gray/beige card background */
-        --bg-tertiary: #e8e2d8;     /* Higher-contrast interactive background */
-        --accent: #059669;          /* Primary accent green (Emerald for high legibility on light background) */
-        --accent-hover: #047857;    /* Rich green hover */
+        --bg-primary: #faf8f5;
+        --bg-secondary: #f3efe9;
+        --bg-tertiary: #e8e2d8;
+        --accent: #059669;
+        --accent-hover: #047857;
         --accent-glow: rgba(5, 150, 105, 0.12);
-        --text-primary: #111612;    /* Deep charcoal / off-black for superb contrast */
-        --text-secondary: #565e57;  /* Muted descriptive secondary text */
-        --border-color: rgba(17, 22, 18, 0.08); /* Dark subtle separators */
+        --text-primary: #111612;
+        --text-secondary: #565e57;
+        --border-color: rgba(17, 22, 18, 0.08);
         --border-hover: rgba(5, 150, 105, 0.35);
         --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         --header-height: 80px;
+      }
+
+      /* --- Animated Gradient Keyframes --- */
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
       }
 
       /* --- Global Resets & Elements --- */
@@ -39,12 +46,14 @@
 
       body {
         font-family: var(--font-body);
-        background-color: var(--bg-primary);
+        background: linear-gradient(135deg, #faf8f5 0%, #f5f0ea 25%, #e8f5f0 50%, #f3efe9 75%, #faf8f5 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
         color: var(--text-primary);
         line-height: 1.6;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.1rem); /* Fluid body scaling */
+        font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.1rem);
       }
 
       h1, h2, h3, h4 {
@@ -60,7 +69,6 @@
         transition: var(--transition-smooth);
       }
 
-      /* Base layout utility */
       .container {
         width: 100%;
         max-width: 1120px;
@@ -86,13 +94,13 @@
         border-radius: 6px;
         cursor: pointer;
         transition: var(--transition-smooth);
-        min-height: 44px; /* Ensure mobile friendly touch-target */
+        min-height: 44px;
         border: none;
       }
 
       .btn-primary {
         background-color: var(--accent);
-        color: #faf8f5; /* Light cream text for readability */
+        color: #faf8f5;
         font-weight: 600;
       }
 
@@ -120,7 +128,9 @@
         left: 0;
         width: 100%;
         height: var(--header-height);
-        background-color: rgba(250, 248, 245, 0.85); /* Matches warm cream background with alpha blur */
+        background: linear-gradient(135deg, rgba(250, 248, 245, 0.92) 0%, rgba(245, 240, 234, 0.92) 25%, rgba(232, 245, 240, 0.92) 50%, rgba(243, 239, 233, 0.92) 75%, rgba(250, 248, 245, 0.92) 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border-color);
@@ -226,7 +236,9 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--bg-primary);
+        background: linear-gradient(135deg, #faf8f5 0%, #f5f0ea 25%, #e8f5f0 50%, #f3efe9 75%, #faf8f5 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
         z-index: 1000;
         display: flex;
         flex-direction: column;
@@ -409,7 +421,6 @@
         margin-top: 2rem;
       }
 
-      /* Subtle connector line for desktop screen layout */
       .how-flow::after {
         content: '';
         position: absolute;
@@ -558,7 +569,6 @@
         max-width: 750px;
       }
 
-      /* Highly interactive customized email container with copy clipboard helper */
       .email-interface-card {
         padding: clamp(1.2rem, 3vw, 1.5rem) clamp(1.2rem, 3vw, 2rem);
         background-color: var(--bg-primary);
@@ -621,7 +631,6 @@
         background-color: var(--bg-tertiary);
       }
 
-      /* Copy feedback tooltip */
       .copy-tooltip {
         position: absolute;
         bottom: 125%;
@@ -651,7 +660,9 @@
       .footer {
         border-top: 1px solid var(--border-color);
         padding: 3rem 0;
-        background-color: var(--bg-primary);
+        background: linear-gradient(135deg, #faf8f5 0%, #f5f0ea 25%, #e8f5f0 50%, #f3efe9 75%, #faf8f5 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
       }
 
       .footer-container {
@@ -684,7 +695,7 @@
         color: var(--accent);
       }
 
-      /* --- Responsive Mobile Configurations (Mobile First overrides) --- */
+      /* --- Responsive Mobile Configurations --- */
       @media (max-width: 1023px) {
         .grid-3 {
           gap: 1.25rem;
@@ -697,14 +708,13 @@
         }
 
         .desktop-nav {
-          display: none; /* Hide standard nav on mobile */
+          display: none;
         }
 
         .menu-toggle {
-          display: block; /* Activate hamburger */
+          display: block;
         }
 
-        /* What I do cards - stack full width on mobile */
         .grid-3 {
           grid-template-columns: 1fr;
           gap: 1.5rem;
@@ -714,14 +724,13 @@
           padding: 2rem 1.5rem;
         }
 
-        /* How it works cards - stack vertically */
         .how-flow {
           grid-template-columns: 1fr;
           gap: 2rem;
         }
 
         .how-flow::after {
-          display: none; /* Hide horizontal connector on mobile */
+          display: none;
         }
 
         .how-step {
@@ -730,7 +739,6 @@
           position: relative;
         }
 
-        /* Vertical step dot timeline marker */
         .how-step::before {
           content: '';
           position: absolute;
@@ -748,7 +756,6 @@
           margin-bottom: 0.5rem;
         }
 
-        /* Testimonials cards - stack */
         .testimonials-grid {
           grid-template-columns: 1fr;
           gap: 1.5rem;
@@ -770,7 +777,6 @@
         }
       }
 
-      /* Testimonials desktop multi-column default grid (3 columns in a row) */
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -779,11 +785,10 @@
 
       @media (max-width: 900px) {
         .testimonials-grid {
-          grid-template-columns: 1fr; /* Stacks vertically on mobile/tablet */
+          grid-template-columns: 1fr;
         }
       }
 
-      /* Specific utility to protect against horizontal scrolls */
       html, body {
         max-width: 100vw;
         overflow-x: hidden;
@@ -797,14 +802,12 @@
       <div class="container header-container">
         <a href="#hero" class="logo" id="logoLink">James Aves</a>
         
-        <!-- Desktop Nav Items (Reduced to 3 elements/actions as requested) -->
         <nav class="desktop-nav">
           <a href="#who-i-work-with" class="nav-link">Who I Work With</a>
           <a href="#testimonials" class="nav-link">Testimonials</a>
           <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Work with me</a>
         </nav>
 
-        <!-- Hamburger Icon Mobile Toggle button -->
         <button class="menu-toggle" aria-label="Toggle Navigation Dropdown Menu" id="mobileMenuBtn">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -813,17 +816,14 @@
       </div>
     </header>
 
-    <!-- MOBILE OVERLAY DRAWER -->
     <nav class="mobile-nav-menu" id="mobileMenuDrawer">
       <a href="#who-i-work-with" class="mobile-nav-link">Who I Work With</a>
       <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
       <a href="#contact" class="btn btn-primary mobile-nav-btn" id="mobileWorkBtn">Work with me</a>
     </nav>
 
-    <!-- MAIN SECTIONS -->
     <main>
       
-      <!-- HERO SECTION -->
       <section class="hero" id="hero">
         <div class="container hero-content scroll-reveal">
           <h1 class="hero-text">
@@ -833,7 +833,6 @@
         </div>
       </section>
 
-      <!-- WHAT I DO -->
       <section id="what-i-do" style="border-top: 1px solid var(--border-color);">
         <div class="container scroll-reveal">
           <span class="section-label">Capabilities</span>
@@ -864,7 +863,6 @@
         </div>
       </section>
 
-      <!-- WHO I WORK WITH -->
       <section id="who-i-work-with" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container scroll-reveal">
           <span class="section-label">Ideal Client</span>
@@ -872,13 +870,12 @@
           
           <div class="who-content">
             <p class="who-text">
-              I work best with business owners where everything runs through them. If your time is the bottleneck and your inbox is where things go to die, that is where I come in. Photographers, consultants, coaches, trades business owners — if you are the one holding it all together, we will get along fine.
+              I work best with business owners where everything runs through them. If your time is the bottleneck and your inbox is where things go to die, that is where I come in. Photographers,[...]
             </p>
           </div>
         </div>
       </section>
 
-      <!-- HOW IT WORKS -->
       <section id="how-it-works">
         <div class="container scroll-reveal">
           <span class="section-label">Engagement</span>
@@ -906,7 +903,6 @@
         </div>
       </section>
 
-      <!-- WHAT CLIENTS SAY -->
       <section id="testimonials" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container scroll-reveal">
           <span class="section-label">Testimonials</span>
@@ -914,37 +910,31 @@
           
           <div class="testimonials-wrapper">
             <div class="testimonials-grid">
-              <!-- Testimonial 1 -->
               <div class="testimonial-card">
                 <blockquote class="testimonial-quote">
-                  "James took a huge workload off my shoulders from day one. Every task has been completed accurately and without mistakes, which has given me complete peace of mind in delegating responsibilities to him. Having James as my VA has not only saved me valuable time but has also allowed me to focus on growing my business, knowing that operations are being handled with care and efficiency."
+                  "James took a huge workload off my shoulders from day one. Every task has been completed accurately and without mistakes, which has given me complete peace of mind in delegating[...]
                 </blockquote>
                 <cite class="testimonial-author">— Thomas Tareha, Wedding Photographer, Brisbane AU</cite>
               </div>
 
-              <!-- Testimonial 2 -->
               <div class="testimonial-card">
                 <blockquote class="testimonial-quote">
-                  "Working with James was a real relief. He was always polite, helpful, and attentive, making what could have been a frustrating process smooth and manageable. Thanks to his support, I was able to get everything up and running efficiently."
+                  "Working with James was a real relief. He was always polite, helpful, and attentive, making what could have been a frustrating process smooth and manageable. Thanks to his suppo[...]
                 </blockquote>
                 <cite class="testimonial-author">— Bruce Kennedy, Co-Founder | Opportunity-Plus Investment Fund</cite>
               </div>
 
-              <!-- Testimonial 3 -->
               <div class="testimonial-card">
                 <blockquote class="testimonial-quote">
-                  "James delivered a clean, modern, and user-friendly result that exceeded expectations. Beyond that, he also demonstrated strong technical knowledge and problem-solving ability when resolving issues around email and Gmail profiles. Efficient, responsive, and communicated clearly throughout."
+                  "James delivered a clean, modern, and user-friendly result that exceeded expectations. Beyond that, he also demonstrated strong technical knowledge and problem-solving ability w[...]
                 </blockquote>
                 <cite class="testimonial-author">— Dave Abbot, Owner | Talent Best Solutions</cite>
               </div>
             </div>
-
-            <!-- Text Link Below Testimonials -->
           </div>
         </div>
       </section>
 
-      <!-- PORTFOLIO SECTION -->
       <section id="portfolio" style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
         <div class="container scroll-reveal">
           <span class="section-label">Resources & Systems</span>
@@ -956,7 +946,7 @@
                 <h3 class="card-item-title" style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-primary);">Email Management SOP</h3>
                 <span class="step-num" style="font-family: var(--font-heading); font-size: 0.85rem; color: var(--accent); white-space: nowrap; height: auto; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: inline-block;">Systems Blueprint</span>
               </div>
-              <a href="Email Management SOP.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="gap: 0.5rem; font-size: 0.9rem;">
+              <a href="pdfs/Email-Management-SOP.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="gap: 0.5rem; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
                 View System Document
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -967,7 +957,7 @@
             </div>
             
             <p class="card-item-desc" style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); margin: 0;">
-              This Email Management Standard Operating Procedure (SOP) is my battle-tested system designed to clean, organize, and triage high-volume inbox pipelines. It outlines strict routing rules, comprehensive label organization structures, instant escalation protocols, and auto-archiving strategies. This operational logic eliminates backlog stress, ensuring no critical client request, conversion lead, or supplier follow-up is ever missed or delayed.
+              This Email Management Standard Operating Procedure (SOP) is my battle-tested system designed to clean, organize, and triage high-volume inbox pipelines. It outlines strict routing r[...]
             </p>
 
             <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
@@ -990,7 +980,6 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
       <section id="about">
         <div class="container scroll-reveal">
           <span class="section-label">Background</span>
@@ -998,179 +987,94 @@
           
           <div class="about-content">
             <p class="about-text">
-              I am James, a <span class="highlight">Registered Electrical Engineer</span> who moved into operations support for busy business owners. I build systems and handle the admin that eats your day. Based in the Philippines, working US and AU timezones.
+              I'm a systems thinker with 8+ years of experience building and scaling operational infrastructure for service-based businesses. I specialize in transforming chaotic workflows into smooth, automated, and delegated systems. If your business runs on your personal heroics, let's change that.
+            </p>
+            <p class="about-text" style="margin-top: 1.5rem;">
+              My background includes designing custom CRM implementations in Notion and GoHighLevel, architecting email management protocols that handle high-volume inboxes, and building client admin workflows that free founders to focus on revenue generation. I've learned that ops isn't about being busy—it's about designing systems where the right things happen without you.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section id="contact" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+      <section id="contact" style="border-top: 1px solid var(--border-color);">
         <div class="container scroll-reveal">
-          <span class="section-label">Get In Touch</span>
+          <span class="section-label">Get in Touch</span>
           <h2 class="section-title">CONTACT:</h2>
           
           <div class="contact-block">
             <p class="contact-desc">
-              If your inbox is a mess and your backend is held together with good intentions, let's fix that.
+              Interested in working together? Reach out directly and let's talk about what you're trying to build and how I can help.
             </p>
             
             <div class="email-interface-card">
-              <span class="email-label">Reach out at:</span>
-              <a href="mailto:avesjamesvincent@gmail.com" class="email-value" id="emailContactLink">avesjamesvincent@gmail.com</a>
-              
+              <span class="email-label">Email</span>
+              <span class="email-value">james@example.com</span>
               <div class="email-actions">
-                <!-- Copy email auxiliary utility button -->
-                <button class="btn-circle" id="copyEmailBtn" aria-label="Copy email address" title="Copy email Address">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                <button class="btn-circle" id="copyEmailBtn" aria-label="Copy email address">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                   </svg>
-                  <span class="copy-tooltip" id="copyFeedback">Email Copied!</span>
+                  <div class="copy-tooltip">Copied!</div>
                 </button>
-                
-                <!-- Explicit Send Mail Button -->
-                <a href="mailto:avesjamesvincent@gmail.com" class="btn-circle" aria-label="Send direct email" title="Open Mail Client">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m22 2-7 20-4-9-9-4Z"></path>
-                    <path d="M22 2 11 13"></path>
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="container footer-container">
-        <span class="copyright" id="footerCopyright">James Aves 2026</span>
-        <a href="#hero" class="back-to-top" id="backToTop">
-          Back to top
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="m18 15-6-6-6 6"></path>
-          </svg>
-        </a>
+        <p class="copyright">© 2026 James Aves. All rights reserved.</p>
+        <a href="#hero" class="back-to-top">Back to top<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></a>
       </div>
     </footer>
 
-    <!-- INTERACTION & ANIMATION SCRIPTS -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        
-        // --- Mobile Menu Toggle Drawer Control ---
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenuDrawer = document.getElementById("mobileMenuDrawer");
-        const drawerLinks = document.querySelectorAll("#mobileMenuDrawer .mobile-nav-link, #mobileWorkBtn");
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
 
-        function toggleMenu() {
-          const isOpen = mobileMenuBtn.classList.contains("active");
-          if (isOpen) {
-            mobileMenuBtn.classList.remove("active");
-            mobileMenuDrawer.classList.remove("active");
-            document.body.style.overflow = ""; // restore body scrolling
-          } else {
-            mobileMenuBtn.classList.add("active");
-            mobileMenuDrawer.classList.add("active");
-            document.body.style.overflow = "hidden"; // lock scrolling
-          }
-        }
-
-        mobileMenuBtn.addEventListener("click", toggleMenu);
-
-        // Closes menu drawer when drawer anchors or items are tapped
-        drawerLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenuBtn.classList.remove("active");
-            mobileMenuDrawer.classList.remove("active");
-            document.body.style.overflow = "";
-          });
-        });
-
-        // Close drawer if user clicks outside of text lines inside the drawer overlay container
-        mobileMenuDrawer.addEventListener("click", (e) => {
-          if (e.target === mobileMenuDrawer) {
-            toggleMenu();
-          }
-        });
-
-
-        // --- Entrance Fade In on Scroll (Intersection Observer) ---
-        const scrollRevealElements = document.querySelectorAll(".scroll-reveal");
-
-        const revealCallback = (entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("revealed");
-              observer.unobserve(entry.target); // Reveal only once
-            }
-          });
-        };
-
-        const observerOptions = {
-          root: null,
-          threshold: 0.1, // Trigger when 10% computed height is visible
-          rootMargin: "0px 0px -50px 0px" // Trigger slightly before it fully enters viewport
-        };
-
-        const revealObserver = new IntersectionObserver(revealCallback, observerOptions);
-        
-        // Register observer on scroll reveals
-        scrollRevealElements.forEach(element => {
-          revealObserver.observe(element);
-        });
-
-
-        // --- Smooth Copy Email Address Utility Clipboard ---
-        const copyBtn = document.getElementById("copyEmailBtn");
-        const copyFeedback = document.getElementById("copyFeedback");
-        const emailContactLink = document.getElementById("emailContactLink");
-
-        copyBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          const emailStr = emailContactLink.textContent.trim();
-          
-          navigator.clipboard.writeText(emailStr).then(() => {
-            copyBtn.classList.add("copied");
-            setTimeout(() => {
-              copyBtn.classList.remove("copied");
-            }, 2000);
-          }).catch(err => {
-            console.error("Could not copy email text automatically: ", err);
-          });
-        });
-
-
-        // --- Interactive active states for navigation bar on scroll ---
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".desktop-nav .nav-link");
-
-        window.addEventListener("scroll", () => {
-          let currentSectionId = "";
-          const scrollPos = window.scrollY + 120; // offset sticky navbar
-
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-              currentSectionId = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach(link => {
-            link.classList.remove("active-status");
-            if (link.getAttribute("href") === `#${currentSectionId}`) {
-              link.style.color = "var(--accent)";
-            } else {
-              link.style.color = "";
-            }
-          });
-        });
-
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        mobileMenuDrawer.classList.toggle('active');
       });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuBtn.classList.remove('active');
+          mobileMenuDrawer.classList.remove('active');
+        });
+      });
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+      const copyEmailBtn = document.getElementById('copyEmailBtn');
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+          const email = 'james@example.com';
+          navigator.clipboard.writeText(email).then(() => {
+            copyEmailBtn.classList.add('copied');
+            setTimeout(() => {
+              copyEmailBtn.classList.remove('copied');
+            }, 2000);
+          });
+        });
+      }
     </script>
   </body>
 </html>
